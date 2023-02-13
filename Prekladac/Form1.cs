@@ -59,5 +59,19 @@ namespace Prekladac
                 translationLabel.Text = "Please select a language to translate from.";
             }
         }
+
+        private void addTranstationButton_Click(object sender, EventArgs e)
+        {
+            string englishWord = englishWordTextBox.Text.ToLower();
+            string czechWord = czechWordTextBox.Text.ToLower();
+            if(englishWord != "" || czechWord != "")
+            {
+                englishCzechDictionary.Add(englishWord, czechWord);
+            } 
+            else
+            {
+                errorLabel.Text = "One of the translated words is not filled in.";
+            }
+        }
     }
 }

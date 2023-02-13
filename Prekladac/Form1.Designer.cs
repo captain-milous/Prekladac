@@ -35,9 +35,10 @@ namespace Prekladac
             this.EnglishLabel = new System.Windows.Forms.Label();
             this.CzechLabel = new System.Windows.Forms.Label();
             this.englishWordTextBox = new System.Windows.Forms.TextBox();
-            this.CzechWordTextBox = new System.Windows.Forms.TextBox();
+            this.czechWordTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.addTranstationButton = new System.Windows.Forms.Button();
+            this.errorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // wordTextBox
@@ -151,13 +152,13 @@ namespace Prekladac
             this.englishWordTextBox.Size = new System.Drawing.Size(173, 35);
             this.englishWordTextBox.TabIndex = 10;
             // 
-            // CzechWordTextBox
+            // czechWordTextBox
             // 
-            this.CzechWordTextBox.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.CzechWordTextBox.Location = new System.Drawing.Point(333, 415);
-            this.CzechWordTextBox.Name = "CzechWordTextBox";
-            this.CzechWordTextBox.Size = new System.Drawing.Size(173, 35);
-            this.CzechWordTextBox.TabIndex = 11;
+            this.czechWordTextBox.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.czechWordTextBox.Location = new System.Drawing.Point(333, 415);
+            this.czechWordTextBox.Name = "czechWordTextBox";
+            this.czechWordTextBox.Size = new System.Drawing.Size(173, 35);
+            this.czechWordTextBox.TabIndex = 11;
             // 
             // label4
             // 
@@ -169,24 +170,36 @@ namespace Prekladac
             this.label4.TabIndex = 12;
             this.label4.Text = "Add translation into Dictonary";
             // 
-            // button1
+            // addTranstationButton
             // 
-            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(205, 473);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 50);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Add word";
-            this.button1.UseVisualStyleBackColor = true;
+            this.addTranstationButton.Font = new System.Drawing.Font("Comic Sans MS", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.addTranstationButton.Location = new System.Drawing.Point(205, 473);
+            this.addTranstationButton.Name = "addTranstationButton";
+            this.addTranstationButton.Size = new System.Drawing.Size(200, 50);
+            this.addTranstationButton.TabIndex = 13;
+            this.addTranstationButton.Text = "Add word";
+            this.addTranstationButton.UseVisualStyleBackColor = true;
+            this.addTranstationButton.Click += new System.EventHandler(this.addTranstationButton_Click);
+            // 
+            // errorLabel
+            // 
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.errorLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabel.Location = new System.Drawing.Point(528, 417);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(0, 29);
+            this.errorLabel.TabIndex = 14;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 607);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.errorLabel);
+            this.Controls.Add(this.addTranstationButton);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.CzechWordTextBox);
+            this.Controls.Add(this.czechWordTextBox);
             this.Controls.Add(this.englishWordTextBox);
             this.Controls.Add(this.CzechLabel);
             this.Controls.Add(this.EnglishLabel);
@@ -218,9 +231,10 @@ namespace Prekladac
         private System.Windows.Forms.Label EnglishLabel;
         private System.Windows.Forms.Label CzechLabel;
         private System.Windows.Forms.TextBox englishWordTextBox;
-        private System.Windows.Forms.TextBox CzechWordTextBox;
+        private System.Windows.Forms.TextBox czechWordTextBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addTranstationButton;
+        private System.Windows.Forms.Label errorLabel;
     }
 }
 
