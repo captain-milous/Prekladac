@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,14 +14,7 @@ namespace Prekladac
 {
     public partial class Form1 : Form
     {
-        private Dictionary<string, string> englishCzechDictionary = new Dictionary<string, string>
-        {
-            { "hello", "ahoj" },
-            { "yes", "ano" },
-            { "no", "ne" },
-            { "dog", "pes" },
-            { "cat", "kočka" }
-        };
+        public Dictionary<string, string> englishCzechDictionary = ImportDictionaryFrom("englishCzechDictionary.json");
 
         public Form1()
         {
@@ -67,11 +62,26 @@ namespace Prekladac
             if(englishWord != "" || czechWord != "")
             {
                 englishCzechDictionary.Add(englishWord, czechWord);
+                SaveDictionary(englishCzechDictionary);
             } 
             else
             {
                 errorLabel.Text = "One of the translated words is not filled in.";
             }
+        }
+
+        public static void SaveDictionary(Dictionary<string, string> dic)
+        {
+            string dictionaryJson = JsonConvert.SerializeObject(dic);
+            File.WriteAllText("englishCzechDictionary.json", dictionaryJson);
+            MessageBox.Show("The dictionary has been saved to the file englishCzechDictionary.json.");
+        }
+
+        public static Dictionary<string, string> ImportDictionaryFrom(string filePath)
+        {
+            string jsonString = File.ReadAllText(filePath);
+            Dictionary<string, string> dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonString);
+            return dictionary;
         }
     }
 }
